@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Разделы{% endblock %}
+{% block content %}
+<h1>Разделы</h1>
+<ul>
+  {% for s in sections %}
+    <li><a href="{% url 'blog:section_detail' s.slug %}">{{ s.title }}</a></li>
+  {% empty %}
+    <li>Разделов пока нет</li>
+  {% endfor %}
+</ul>
+
+<h2>Последние материалы</h2>
+<ul>
+  {% for p in latest_posts %}
+    <li><a href="{% url 'blog:post_detail' p.slug %}">{{ p.title }}</a></li>
+  {% empty %}
+    <li>Материалов пока нет</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ post.title }}</h1>
+  {% if post.cover_image %}
+    <p><img src="{{ post.cover_image.url }}" alt="" style="max-width:100%;height:auto"></p>
+  {% endif %}
+  <div>{{ post.content|safe }}</div>
+  {% if post.images.all %}
+    <h3>Галерея</h3>
+    <div>
+      {% for img in post.images.all %}
+        <img src="{{ img.image.url }}" alt="{{ img.caption }}" style="max-width:240px;height:auto;margin:6px">
+      {% endfor %}
+    </div>
+  {% endif %}
+</article>
+{% endblock %}

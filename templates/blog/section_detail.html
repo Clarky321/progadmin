@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}{{ section.title }}{% endblock %}
+{% block content %}
+<h1>{{ section.title }}</h1>
+<p>{{ section.description }}</p>
+<ul>
+  {% for p in posts %}
+    <li><a href="{% url 'blog:post_detail' p.slug %}">{{ p.title }}</a></li>
+  {% empty %}
+    <li>Материалов пока нет</li>
+  {% endfor %}
+</ul>
+{% endblock %}
